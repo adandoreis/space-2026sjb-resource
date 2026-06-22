@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>简明观赛指南 · 世界杯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f8;
+            color: #1e2329;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 — 故事开场 */
+        .hero {
+            background: linear-gradient(145deg, #0f141a 0%, #18212b 100%);
+            color: #e7edf5;
+            padding: 5.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #e63946 0px, #e63946 20px, transparent 20px, transparent 40px);
+            opacity: 0.35;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .opening {
+            font-size: 1.2rem;
+            font-weight: 350;
+            max-width: 680px;
+            margin: 0 auto 0.5rem;
+            opacity: 0.88;
+        }
+
+        .hero .opening strong {
+            font-weight: 550;
+            color: #f0c27f;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 3.5rem;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border-radius: 0 0 12px 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 2.4rem 0 0.8rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 2px solid #e63946;
+            display: inline-block;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            color: #2c3a4a;
+        }
+
+        .lead a {
+            color: #c53030;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #c53030;
+            transition: border 0.2s, color 0.2s;
+        }
+
+        .lead a:hover {
+            border-bottom-style: solid;
+            color: #881c1c;
+        }
+
+        /* 特点卡片列表 — 信息密度 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.4rem;
+            margin: 1.6rem 0 1rem;
+        }
+
+        .feature-item {
+            background: #f7f9fc;
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem 1.3rem;
+            border-left: 4px solid #e63946;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            margin-bottom: 0.5rem;
+            color: #0f1a26;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #2f3e4e;
+            margin-bottom: 0;
+        }
+
+        .feature-item .badge {
+            display: inline-block;
+            background: #e63946;
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 0.1rem 0.55rem;
+            border-radius: 40px;
+            margin-right: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .tip-box {
+            background: #f0f3f7;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1.2rem;
+            border: 1px solid #dde3eb;
+        }
+
+        .tip-box strong {
+            color: #c53030;
+        }
+
+        .faq-preview {
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        .faq-preview details {
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dashed #d0d7e0;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-preview summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1a2838;
+            padding: 0.3rem 0;
+        }
+
+        .faq-preview summary:hover {
+            color: #c53030;
+        }
+
+        .faq-preview details p {
+            padding: 0.6rem 0.2rem 0.2rem;
+            color: #2f4053;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            margin-top: 2.6rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e2e7ef;
+            font-size: 0.88rem;
+            color: #4b5b6b;
+            text-align: center;
+        }
+
+        .footer-note a {
+            color: #a03232;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3.2rem 1rem 2.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .opening {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 · 故事开场 -->
+    <section class="hero">
+        <h1>世界杯，不止九十分钟</h1>
+        <p class="opening">
+            从抽签日的纸签滑落，到决赛夜的终场哨响 —— <strong>每一次触球都写进记忆</strong>。
+        </p>
+        <p class="opening" style="margin-top: 0.3rem;">
+            这里是简明观赛指南，帮你更快找到方向。
+        </p>
+    </section>
+
+    <!-- 浅色正文区 -->
+    <main class="content">
+
+        <!-- 承接段落 · 简明指南视角 -->
+        <h2 class="section-title">从何看起</h2>
+        <p class="lead">
+            <a href="https://chinese-wccup.com">世界杯</a>的赛事轮次、小组对阵、积分规则和淘汰赛路径，构成了每届大赛的基本骨架。
+            对于新观众，了解赛程阶段与出线逻辑往往比记住球星名单更实用。以下整理了几项核心特点，帮助你快速进入状态。
+        </p>
+
+        <!-- 特点列表 -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3><span class="badge">01</span> 阶段分明</h3>
+                <p>小组赛 → 1/8决赛 → 1/4决赛 → 半决赛 → 决赛。每轮淘汰赛均为单场决胜，加时及点球规则透明。</p>
+            </div>
+            <div class="feature-item">
+                <h3><span class="badge">02</span> 积分与净胜球</h3>
+                <p>小组内胜3分、平1分、负0分。同分先比净胜球，再比较进球数、相互战绩。理解这三条，看懂九成小组悬念。</p>
+            </div>
+            <div class="feature-item">
+                <h3><span class="badge">03</span> 实时数据整合</h3>
+                <p>官网提供赛程日历、即时比分、阵容深度、累计黄牌等模块。信息层级清晰，适合赛前快速查阅。</p>
+            </div>
+            <div class="feature-item">
+                <h3><span class="badge">04</span> 多语言赛事通</h3>
+                <p>界面支持中文及主要观赛语言，赛事报道与数据看板同步更新。无需频繁跳转站点即可获得完整信息流。</p>
+            </div>
+        </div>
+
+        <!-- 温和场景提示 -->
+        <div class="tip-box">
+            <strong>📌 观赛前确认</strong> — 比赛日期与开球时间可能因转播安排微调，建议在赛前一日核对官方赛程表。
+            另外，部分淘汰赛阶段若出现加时或点球，实际结束时间会晚于预定，合理规划休息时间更从容。
+        </div>
+
+        <!-- FAQ 摘要 · 信息补充 -->
+        <h2 class="section-title" style="margin-top: 2.2rem;">常见疑问摘要</h2>
+        <div class="faq-preview">
+            <details>
+                <summary>小组赛同分如何决定排名？</summary>
+                <p>首先比较同分球队之间的相互积分、净胜球、进球数；若仍相同，则比较所有小组赛的总净胜球、总进球数；最后是公平竞赛积分（黄牌扣分）及抽签。极端情况少见，但规则完备。</p>
+            </details>
+            <details>
+                <summary>淘汰赛加时与点球规则？</summary>
+                <p>淘汰赛常规时间打平后进入30分钟加时（上下半场各15分钟），加时仍平局则进行点球大战（5轮制，若平局则突然死亡）。加时阶段每队可额外换人一次。</p>
+            </details>
+            <details>
+                <summary>如何最快获取实时比分与数据？</summary>
+                <p>官网 <a href="https://chinese-wccup.com" style="text-decoration: none; color: #c53030; border-bottom: 1px dotted #c53030;">世界杯</a> 赛事中心提供比赛列表、文字直播、赛后数据板。移动端适配良好，加载速度稳定。</p>
+            </details>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div style="margin-top: 2.2rem; padding: 0.1rem 0 0.2rem;">
+            <p style="font-size: 1rem; color: #1b2b3c;">
+                从揭幕战到决赛夜，每一次哨声都是故事的分页。希望这份简明的指引，能让你在观看<a href="https://chinese-wccup.com" style="color: #c53030; text-decoration: none; border-bottom: 1px dotted #c53030; font-weight: 500;">世界杯</a>时更加专注比赛本身。
+            </p>
+            <p style="margin-top: 0.6rem; color: #3b4c5e; font-size: 0.96rem;">
+                赛事信息以官方发布为准，合理安排观赛时间，享受竞技本身。
+            </p>
+        </div>
+
+        <div class="footer-note">
+            <span>© 所有数据来源 · </span><a href="https://chinese-wccup.com" style="color: #a03232;">世界杯</a>
+            <span style="margin-left: 0.4rem;">· 页面仅作信息整合</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
